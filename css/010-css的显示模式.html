@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-css的显示模式.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			border: 1px solid #000;
+			width: 300px;
+			height: 300px;
+			margin: 50px;
+			padding: 50px;
+			/*display: inline-block;*/
+		}
+		.father{
+			border: 1px solid #000;
+		}
+		.father .box{
+			border-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">div1</div>
+	<div class="box">div2</div>
+	<div class="father">
+		<sapn class="box">span1</sapn>
+		<span class="box">span2</span>
+	</div>
+	<img class="box" src="image/01.jpg" alt="">
+	<img class="box" src="image/01.jpg" alt="">
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>
