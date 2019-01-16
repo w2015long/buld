@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-jQuery上静态each方法.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var arr = [12,23,670,97,56,66];
+			var aLi = document.getElementsByTagName('li');
+			var likeArr = {0:'apple',1:'pear',2:'orange',3:'banana',length:4};
+			arr.forEach(function(value,index){
+				console.log(index+'::'+value);
+			})
+			$.each(arr,function(index,value){
+				console.log(index,'::',value)
+			})
+			$.each(aLi,function(index,value){
+				console.log(index,'::',value)
+			})	
+			$.each(likeArr,function(index,value){
+				console.log(index,'::',value)
+			})						
+		})
+	</script>
+
+</head>
+<body>
+	<ul>
+		<li>li1</li>
+		<li>li2</li>
+		<li>li3</li>
+		<li>li4</li>
+		<li>li5</li>
+	</ul>
+</body>
+</html>
