@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-jQuery核心函数.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			float: left;
+			margin-left: 15px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div id="box2"></div>
+	<div></div>	
+</body>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		var jq = $(function(){
+			console.log($(null));
+			console.log($(undefined));
+			console.log($(''));
+			console.log($(0));
+			console.log($(false));
+			console.log($(NaN));
+			console.log($('div'));
+			console.log($('.box1'));
+			console.log($('#box2'));
+			var oBox = document.getElementById('box2');
+			console.log('DOM转jQuery',$(oBox));
+			console.log($('<h1>我是大标题</h1>'));
+		})
+		console.log("jq",jq);
+	</script>
+</html>
