@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-jQuery上静态map方法.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var arr = [12,23,670,97,56,66];
+			var aLi = document.getElementsByTagName('li');
+			var likeArr = {0:'apple',1:'pear',2:'orange',3:'banana',length:4};
+			/*
+			arr.forEach(function(value,index){
+				console.log(index+'::'+value);
+			})
+			$.each(arr,function(index,value){
+				console.log(index,'::',value)
+			})
+			$.each(aLi,function(index,value){
+				console.log(index,'::',value)
+			})	
+			$.each(likeArr,function(index,value){
+				console.log(index,'::',value)
+			})
+			*/
+			
+			arr.map(function(value,index){
+				console.log('at',index,'is',value)
+			})
+			// aLi.map(function(value,index){//非数组不能用map映射
+			// 	console.log('at',index,'is',value)
+			// })
+			// likeArr	.map(function(value,index){//非数组不能用map映射
+			// 	console.log('at',index,'is',value)				
+			// })
+			var $res = $.map(arr,function(value,index){
+				console.log(index,':::',value)
+				//return 才有返回值
+				return value>60;
+			})			
+			console.log($res);
+			var $res1 = $.map(aLi,function(value,index){
+				console.log(index,'->',value);
+				return value;
+			})
+			console.log($res1);	
+			var $res2 = $.map(likeArr,function(value,index){
+				console.log(index,'-->',value);
+				return value;
+			})
+			console.log($res2);					
+		})
+	</script>
+
+</head>
+<body>
+	<ul>
+		<li>li1</li>
+		<li>li2</li>
+		<li>li3</li>
+		<li>li4</li>
+		<li>li5</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-jQuery其他静态方法.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var arr = [8,12,22,35,68];
+			var aLi = document.getElementsByTagName('li');
+			var str = ' 	--apple  ';
+			var obj = {};
+			function test(){
+
+			}
+			console.log(str);
+			console.log($.trim(str));//去除字符串两边空格并返回
+			console.log($.isWindow(obj));//判断是不是window对象
+			console.log($.isWindow(window));
+			console.log($.isArray(aLi));//判断是不是真数组
+			console.log($.isArray(arr));
+			console.log($.isFunction(arr));
+			console.log($.isFunction(test));
+		})
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>
