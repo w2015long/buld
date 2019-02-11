@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-属性与节点属性.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var obj = {};
+			obj.name = 'Tom';
+			console.log(obj.name); 
+			var oDiv = document.getElementById('box');
+			oDiv.name = 'page';
+			console.log(oDiv.name);//属性
+			oDiv.class = 'div1';
+			console.log(oDiv.class);//节点属性
+		})
+		//可以在控制台sources中watch一下
+	</script>
+</head>
+<body>
+	<div class="div" id="box">div</div>
+</body>
+</html>

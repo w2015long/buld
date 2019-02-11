@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-原生js操作属性.html</title>
+	<style type="text/css">
+		.div{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" class="div"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	var oDiv = document.getElementById('box');
+	console.log(oDiv.id);
+	console.log(oDiv['id'])
+	oDiv.setAttribute('index','99');//可以自定义设置属性
+	console.log('oDiv.index',oDiv.index);//获取不到setAttribute设置的非原生属性
+	console.log(oDiv.getAttribute('index'));//可以获取自定义属性
+	oDiv['id'] = 'apple';
+	console.log('oDiv.index',oDiv.index);
+	oDiv.removeAttribute('index');	
+	console.log(oDiv.index);
+	$(function(){
+		
+	})
+</script>
+</html>

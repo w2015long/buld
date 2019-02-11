@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-jQuery操作属性.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			console.log($('input').attr('value'));//返回的都是第一个元素的值
+			console.log($('input').prop('value'));//返回的都是第一个元素的值
+			console.log($('input').attr('name'));
+			console.log($('input').prop('name'));
+			$('input').attr('value','girl');
+			$('input').prop('value','woman');
+			// $('input').removeAttr('name');//删除属性和值
+			$('input').removeProp('name');//只删除属性的值
+			// console.log($('input').eq(-1).attr('checked'));
+			console.log($('input').eq(-1).prop('checked'));//可以获取到属性的布尔值
+			// $('input').eq(-1).prop('checked',true);
+			$('input').eq(-1).attr('checked',true);
+			// $('input').eq(-1).removeAttr('checked');
+		})
+	</script>
+</head>
+<body>
+	<input type="type" value="aa" name="apple">
+	<input type="type" value="bb" name="boy">
+	<input type="type" value="cc" name="cat">
+	<input type="checkbox">
+</body>
+</html>
