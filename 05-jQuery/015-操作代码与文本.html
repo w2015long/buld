@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-操作代码与文本.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			// console.log($('#tag').html());
+			console.log($('#tag').html('<h1>我是大标题</h1>'));//也可添加标签
+			// console.log($('#page').text());
+			console.log($('#page').text('<h1>我是大标题</h1>'));//只能添加文本
+
+		})
+	</script>
+</head>
+<body>
+	<div id="tag">
+		我是div
+		<p>我是段落</p>
+	</div>
+	<div id="page">
+		我是文本
+		<s>删除</s>
+	</div>
+</body>
+</html>

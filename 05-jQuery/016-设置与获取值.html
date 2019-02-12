@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-设置与获取值.html</title>
+</head>
+<body>
+	<input type="text" value="default1">
+	<input type="text" value="default2">
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		console.log($('input').val());
+		$('input').val('this is set');
+	})
+</script>
+</html>
