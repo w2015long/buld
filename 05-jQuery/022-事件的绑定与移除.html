@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-事件的绑定与移除.html</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			margin: 10px 10px;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('div').click(function(){
+				console.log('this is click test');
+			})
+			$('div').mouseover(function(){
+				console.log('this is mouseover test');
+			})
+			$('div').on('click',function(){
+				alert('this is on clicking....');
+			})
+			function handleEvent(){
+				console.log('this is a handle event');
+			}
+			$('div').on('mouseenter',handleEvent);
+			//$('div').off();	//移除所有事件
+			$('div').off('mouseenter',handleEvent);//移除特定事件
+		})
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>
