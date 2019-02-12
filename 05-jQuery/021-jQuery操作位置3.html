@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-jQuery操作位置3.html</title>
+	<style type="text/css">
+		.father{
+			width: 200px;
+			height: 200px;
+			background: #cecece;
+			overflow: auto;
+		}
+		.son{
+			width: 3000px;
+			height: 3000px;
+			background: pink;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button')[0].onclick = function(){
+				console.log($('.father').scrollTop());
+				console.log($('.father').scrollLeft());
+				$('.father').scrollTop(500);
+				$('.father').scrollLeft(800);
+			} 
+		})
+	</script>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+	<button>获取</button>
+</body>
+</html>
