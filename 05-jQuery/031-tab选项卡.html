@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-tab选项卡.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.btn>li{
+			list-style: none;
+			float: left;
+			width: 25%;
+			height: 30px;
+			background: #eee;
+			line-height: 30px;
+			text-align: center;
+		}
+		.btn>li.active{
+			background: #f88;
+		}
+		.content>li{
+			display: none;
+			width: 25%;
+			height: 300px;
+			background: #098;
+		}
+		.content>li.show{
+			display: block;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.btn>li').mouseover(function(){
+				var $this = $(this);
+				$this.addClass('active');
+				$this.siblings().removeClass('active');
+
+				var $currentLi = $('.content>li').eq($this.index());
+				$currentLi.addClass('show');
+				$currentLi.siblings().removeClass('show');
+			})
+		})
+	</script>
+</head>
+<body>
+	<ul class="btn">
+		<li class="active">手机</li>
+		<li>家电</li>
+		<li>空调</li>
+		<li>机器人</li>
+	</ul>
+	<ul class="content">
+		<li class="show">手机</li>
+		<li>家电</li>
+		<li>空调</li>
+		<li>机器人</li>
+	</ul>
+</body>
+</html>
