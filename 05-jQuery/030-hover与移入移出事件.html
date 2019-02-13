@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030-hover与移入移出事件.html</title>
+	<style type="text/css">
+		.father{
+			float: left;
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			background: #eee;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		.wrap{
+
+			float: left;
+			width: 300px;
+			height: 300px;
+			/*border: 1px solid #000;*/
+			background: #ccc;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background: #f88;
+		}
+		.layout{
+			float: left;
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			background: #eee;
+		}
+		.in{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}				
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			/*
+			$('.father').mouseover(function(){
+				console.log('mouseover');
+			});
+			$('.father').mouseout(function(){
+				console.log('mouseout');
+			});
+			*/
+			$('.father').mouseenter(function(){
+				console.log('mouseenter');
+			});
+			$('.father').mouseleave(function(){
+				console.log('mouseleave');
+			});
+			$('.wrap').hover(function(){
+				console.log('this is begin hover');
+			},function(){
+				console.log('this is end hover');
+			});
+			$('.layout').hover(function(){
+				console.log('this is hover');
+			})	
+		})
+	</script>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+	<div class="wrap">
+		<div class="box"></div>
+	</div>
+	<div class="layout">
+		<div class="in"></div>
+	</div>	
+</body>
+</html>
