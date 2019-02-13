@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-自定义事件.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			function alertEv(){
+				alert('this is default event');
+			}
+			$('div').on('myClick',alertEv);
+			$('div').trigger('myClick');
+		})
+	</script>
+</head>
+<body>
+	<div>this is default event</div>
+</body>
+</html>

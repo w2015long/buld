@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-自动触发事件2.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			
+			$('input:eq(1)').click(function(){
+				alert('click');
+			});
+			// $('input:eq(1)').trigger('click');
+			$('input').eq(1).triggerHandler('click');//阻止默认行为
+
+			$('a').click(function(){
+				alert('this is a link');
+			})
+			// $('a').trigger('click');
+			// $('a').triggerHandler('click');
+			// $('span').trigger('click');
+			$('span').triggerHandler('click');//阻止默认行为
+		})
+	</script>
+</head>
+<body>
+	<a href="https://www.kuazhu.com"><span>点我</span></a>
+	<form action="https://www.kuazhu.com">
+		<input type="text" name="username">
+		<input type="submit" value="提交">
+	</form>
+</body>
+</html>

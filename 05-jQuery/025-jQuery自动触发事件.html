@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-jQuery自动触发事件.html</title>
+	<style type="text/css">
+		.grandfather{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 100px auto;
+		}
+		.father{
+			width: 300px;
+			height: 300px;
+			background: pink;
+			margin: 100px auto;
+			border: 1px solid #000;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin: 100px auto;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.son').click(function(evt){
+				alert('this is son click');
+				// evt.stopPropagation();
+				// return false;
+			})
+			$('.father').click(function(evt){
+				alert('this is father click');
+				// evt.stopPropagation();
+			})
+			$('.grandfather').click(function(){
+				alert('this is grandfather click');
+			})
+			//$('.son').trigger('click');//不阻止冒泡						
+			$('.son').triggerHandler('click');//阻止冒泡
+		})
+	</script>
+</head>
+<body>
+	<div class="grandfather">
+		<div class="father">
+			<div class="son"></div>
+		</div>
+	</div>
+</body>
+</html>
