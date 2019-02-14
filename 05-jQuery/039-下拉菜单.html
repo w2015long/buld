@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039-下拉菜单.html</title>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			font-size: 14px;
+			color: #6c6c6c;
+		}
+		.menu{
+			width: 200px;
+			height: 40px;
+			line-height: 40px;
+			margin: 10px auto;
+			background: #f5f5f5;
+		}
+		.menu .dropdown{
+			float: left;
+			width: 100px;
+			height: 100%;
+			text-align: center;
+		}
+		.dropdown-toggle{
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+		.dropdown-toggle i{
+			transition: all 0.5s linear;
+		}
+		.dropdown-toggle i.arrowDown{
+			transform: rotate(0deg);
+		}
+		.dropdown-toggle i.arrowUp{
+			transform: rotate(180deg);
+		}		
+		.dropdown-toggle.active{
+			background: #fff;
+			color: #ff6700;
+		}
+		.dropdown-layer{
+			display: none;
+			width: 100px;
+			height: 70px;
+			padding: 4px 0px;
+			background: #fff;
+		}
+		.dropdown-item{
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+		}
+		.dropdown-item:hover{
+			background: #c6c6c6;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.dropdown').hover(function(){
+				var $this = $(this);
+				$this.find('.dropdown-toggle').addClass('active');
+				$this.find('.dropdown-toggle .fa').removeClass('arrowDown').addClass('arrowUp');
+				$this.find('.dropdown-layer').stop();
+				$this.find('.dropdown-layer').slideDown(500);
+
+			},function(){
+				var $this = $(this);
+				$this.find('.dropdown-toggle').removeClass('active');
+				$this.find('.dropdown-toggle .fa').removeClass('arrowUp').addClass('arrowDown');
+				$this.find('.dropdown-layer').stop();
+				$this.find('.dropdown-layer').slideUp(500);
+			})
+		})
+	</script>
+</head>
+<body>
+	<ul class="menu">
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle">
+				我的淘宝<i class="fa">&#xf107;</i>
+			</a>
+			<ul class="dropdown-layer">
+				<li class="dropdown-item"><a href="#">已买到的宝贝</a></li>
+				<li class="dropdown-item"><a href="#">我的足迹</a></li>
+			</ul>
+		</li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle">
+				收藏夹<i class="fa">&#xf107;</i>
+			</a>
+			<ul class="dropdown-layer">
+				<li class="dropdown-item"><a href="#">收藏的宝贝</a></li>
+				<li class="dropdown-item"><a href="#">收藏的店铺</a></li>
+			</ul>
+		</li>		
+	</ul>
+</body>
+</html>
