@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-列队动画.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			float: left;
+			margin-left: 10px;
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.wrap').click(function(){
+				$('.wrap').animate({
+					width:500
+				},1000);
+				$('.wrap').animate({
+					height:400
+				},1000);
+				$('.wrap').animate({
+					opacity:0.5
+				},1000);
+			});
+			//链式调用
+			$('.box').click(function(){
+				$('.box').animate({
+					width:500
+				},1000).animate({
+					height:400
+				},1000).animate({
+					opacity:0.5
+				},1000)
+			});	
+			$('.container').click(function(){
+				$('.container').animate({
+					width:500
+				},1000,function(){
+					$('.container').animate({
+						height:400
+					},1000,function(){
+						$('.container').animate({
+							opacity:0.5
+						},1000)
+					})
+				})
+			})		
+		})
+	</script>
+</head>
+<body>
+	<!-- <button>开始动画</button> -->
+	<div class="wrap"></div>
+	<div class="box"></div>
+	<div class="container"></div>
+</body>
+</html>
