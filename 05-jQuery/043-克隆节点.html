@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-克隆节点.html</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('div').click(function(){
+				alert('click div')
+			});			
+			$('button').click(function(){
+
+				// var $div = $('div').clone();//默认浅克隆(不克隆事件)
+				var $div = $('div').clone(true);//深克隆 克隆事件
+				// console.log($div);
+				$('body').append($div);
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>克隆</button>	
+	<div>我是div</div>
+</body>
+</html>
