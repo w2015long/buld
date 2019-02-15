@@ -24,6 +24,14 @@ var server = http.createServer(function(req,res){
 	}	
 */
 	if(req.method == "GET"){
+	
+		//请求路径带参数?
+		if(urlStr.search(/\?/) != -1){
+			var parm = url.parse(urlStr,true).query;
+			//根据前台数据做处理
+			var json = JSON.stringify(parm);
+			res.end(json);
+		}	
 
 		var filePath = './' + urlStr;
 		fs.readFile(filePath,function(err,data){

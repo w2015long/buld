@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>044-ajax2.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+/*接口封装
+1.$.get(url[,参数][,回调函数][,返回数据类型])//发送GET请求
+2.$.post(url[,参数][,回调函数][,返回数据类型]) //发送POST请求
+3.$.getScript(url[,回调函数]) //获取JS代码
+4.$.getJSON(url[,回调函数]) //获取JSON数据
+5.jQuery对象.load(url[,参数][,回调函数]) //将服务器返回的数据加载到jQuery对象的DOM元素中
+
+
+所有的回调函数接收的参数依次为 返回数据,返回状态信息(成功为success 失败为error),jqXHR对象*/		
+		$(function(){
+			$('button').click(function(){
+				var url = './044-data.json';
+				// $.get(url,function(data){
+				// 	console.log(data.name);
+				// },'json');
+				/*
+				$.get(url,{"name":"Leo","age":89},function(data){
+					console.log(data.name);
+				},'json')
+				
+				$.getJSON(url,{"name":"Leo","age":89},function(data){
+					console.log(data.name);
+				})
+				
+				$.getScript('./044-data.js',function(data){
+					console.log(data);
+				})
+				*/
+				// $.post('./postRequire',{"name":"Leo","age":89},function(data){
+				// 	console.log(data);
+				// })
+
+				// $.post('./postRequire',{"name":"Leo","age":89},function(data){
+				// 	console.log(data.age);
+				// },'json');				
+				$('div').load('./044-ajax2.html',function(data,statusMsg,jqXHR){
+					console.log(data,statusMsg,jqXHR)
+				});
+
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>获取数据</button>
+	<div></div>
+</body>
+</html>
