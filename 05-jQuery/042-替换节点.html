@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-替换节点.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+/*替换节点
+1.jQuery对象1.replaceWith(jQuery对象2|HTML代码) 用jQuery对象2中的节点替换jQuery对象1中的节点
+2.jQuery对象1.replaceAll('选择器') 用jQuery对象1中节点替换掉所有选中的节点*/			
+			$('button').click(function(){
+				var $h1 = $('<h1>我是大标题</h1>');
+
+				// $('div').replaceWith('<h1>我是大标题</h1>');
+				$($h1).replaceAll('p');
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>替换</button>
+	<div>我是div</div>
+	<p>p1</p>
+	<p>p2</p>
+	<p>p3</p>
+</body>
+</html>

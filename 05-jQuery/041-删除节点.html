@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-删除节点.html</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('div').click(function(){
+				alert('click div');
+			});
+			$('input').click(function(){
+				/*
+				var $res = $('div').remove();//remove删除元素也删除事件
+				$('body').append($res);
+				*/
+				//var $res = $('div').detach();//detach只删除元素
+				// $('body').append($res);
+				$('div').empty();//清空元素内容
+			})
+		})
+	</script>
+</head>
+<body>
+	<input type="button" value="删除">
+	<div>
+		我是DIV
+		<h1>我是大标题</h1>
+	</div>
+</body>
+</html>
