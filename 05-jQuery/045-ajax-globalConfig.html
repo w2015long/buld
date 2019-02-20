@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-ajax全局配置.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$.ajaxSetup({
+				url: './044-data.json',
+				type: 'GET',
+				dataType: 'json',
+				// data: {name: 'Tom'},
+			});			
+			$('button:eq(0)').click(function(){
+
+				$.ajax({
+					success:function(data){
+						console.log('success',data);
+					},
+					error:function(data){
+						console.log('error',data)
+					},
+					complete:function(data){
+						console.log('complete',data);
+					}
+				})
+
+				
+			})
+			$('button:eq(1)').click(function(){
+
+				$.ajax({
+					type:'POST',
+					data:{"name":"Tom","age":89},
+					success:function(data){
+						console.log('success',data);
+					},
+					error:function(data){
+						console.log('error',data)
+					},
+					complete:function(data){
+						console.log('complete',data);
+					}
+				})
+
+				
+			})			
+		})
+	</script>
+</head>
+<body>
+	<button>获取数据one</button>
+	<button>获取数据two</button>
+</body>
+</html>
