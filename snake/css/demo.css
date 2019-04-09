@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.startPage{
+    position: absolute;
+    width: 100%;
+    height: 800px;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+.startBtn{
+    position:absolute;
+    height:170px;
+    width:200px;
+    background-image: url('../images/startGame.png');
+    background-size:100% 100%;
+    cursor: pointer;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    margin:auto;    
+}
+.wrapper{
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background-image: url('../images/bg.jpg');
+    background-size: 100% 100%;
+}
+.left-side{
+    position: absolute;
+    width: 24%;
+    height: 800px;
+}
+
+.left-side img{
+    display: none;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.main{
+    position: absolute;
+    display: inline-block;
+    left: 25%;
+    width: 50%;
+    height: 90%;
+}
+.header{
+    width: 100%;
+    height: 80px;
+    text-align: center;
+}
+.score{
+    line-height:40px;
+    color:#ddd;
+    font-size:20px;
+    font-weight:bolder;
+}
+.score span{
+    display:inline-block;
+    height:80px;
+    width:30px;
+    line-height:80px;
+    
+}
+.content{
+    position: absolute;
+    left:10%;
+    top: 34%;
+    width: 79.5%;
+    height: 36.5%;
+    border: 1px solid #000;
+}
+.loser{
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.con{
+    /* 居中 */
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-image: url('../images/startP.jpg');
+    background-size:100% 100%;
+    width: 400px;
+    height: 300px;
+    border-radius:20px;
+}
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url('../images/closeBtn.png');
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+.loserScore{
+    position: absolute;
+    left: 40%;
+    top: 42%;
+    display: block;
+    width: 60px;
+    height: 30px;
+    color: #222;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.food{
+    background-image: url('../images/apple.png');
+    background-size:100% 100%;
+}
+.head{
+    background-image: url('../images/head.png');
+    background-size:100% 100%;
+}
+.body{
+    background-image: url('../images/body.png');
+    background-size:100% 100%;
+}
+
