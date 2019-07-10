@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p v-cloak>********{{msg}}</p>
+		<p v-text="msg"></p>
+		<p v-html="message"></p>
+		<!-- v-bind -->
+		<input type="button" value="按钮" :title="MyTitle" @click="show">
+	</div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	let vm = new Vue({
+		el:'#app',
+		data:{
+			msg:"我是文本",
+			message:'<h1>我是大标题</h1>',
+			MyTitle:'我是自定义标题'
+		},
+		methods:{
+			show:function(){
+				console.log('this is a btn event')
+			}
+		}
+	})
+</script>
+</html>
