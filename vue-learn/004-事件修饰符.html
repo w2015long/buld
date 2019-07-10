@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>修饰符</title>
+	<style>
+		.father{
+			width: 500px;
+			height: 500px;
+			background-color: #cecece;
+		}
+		.son{
+			width: 300px;
+			height: 300px;
+			margin:auto;
+			background-color: aqua;
+		}
+		.left{
+			float: left;
+		}
+		.right{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="left">
+			<div class="father" @click="outHandler">
+				<div class="son" @click.stop="inHandler"></div>
+			</div>
+			<a href="http://www.baidu.com" @click.prevent.once="goBaiDu">有问题，去百度</a>
+		</div>
+		<div class="right">
+			<!--   @click.capture 事件捕获阶段执行-->
+<!-- 			<div class="father" @click.capture="outHandler">
+				<div class="son" @click.stop="inHandler"></div>
+			</div>	 -->
+			<div class="father" @click.self="outHandler">
+				<div class="son" @click="inHandler"></div>
+			</div>						
+		</div>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		let vm = new Vue({
+			el:"#app",
+			data:{
+
+			},
+			methods:{
+				outHandler(){
+					console.log('father click')
+				},
+				inHandler(){
+					console.log('son click')
+				},
+				goBaiDu(){
+					console.log('go to baidu')
+				}
+			}
+		})
+	</script>
+</html>
