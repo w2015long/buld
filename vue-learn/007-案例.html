@@ -12,11 +12,11 @@
 		</label>
 		<label>
 			品牌产品:
-			<input type="text" v-model="name" />
+			<input type="text" v-model="name" v-color="'blue'"  />
 		</label>
 		<button @click="add">添加</button>
 		<label>品牌搜索:
-			<input type="text" @keyup.enter="search(keyword)" v-model="keyword"/>
+			<input type="text" @keyup.enter="search(keyword)" v-model="keyword" v-color="'red'" v-focus />
 		</label>
 		<table border="1">
 			<tr>
@@ -60,13 +60,27 @@
 					return `${Y}-${M}-${D}`
 				}
 			},
+			directives:{
+				color:{
+					bind(el,binding){
+						// console.log(binding.value,binding.expression)
+						el.style.color = binding.value;
+					}
+				},
+				focus:{
+					inserted(el){
+						el.focus();
+					}
+				}
+			},
 			methods:{
 				add(){
 					this.carList.push({
 						id:this.id,
 						name:this.name,
 						createAt:new Date()
-					})
+					});
+					this.id = this.name = ''
 				},
 				del(id){
 					/*
