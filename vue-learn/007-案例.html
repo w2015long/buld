@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>品牌案例</title>
+</head>
+<body>
+	<div id="app">
+		<label>
+			品牌ID:
+			<input type="text" v-model="id" />
+		</label>
+		<label>
+			品牌产品:
+			<input type="text" v-model="name" />
+		</label>
+		<button @click="add">添加</button>
+		<label>品牌搜索:
+			<input type="text" @keyup.enter="search(keyword)" v-model="keyword"/>
+		</label>
+		<table border="1">
+			<tr>
+				<th>品牌ID</th>
+				<th>品牌产品</th>
+				<th>创建时间</th>
+				<th>操作</th>
+			</tr>
+			<tr v-for="item in search(keyword)" :key="item.id">
+				<td>{{ item.id }}</td>
+				<td>{{ item.name }}</td>
+				<td>{{ item.createAt | dateFormat}}</td>
+				<td><a href="#" @click.prevent="del(item.id)">删除</a></td>
+			</tr>
+		</table>
+		 
+	</div>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		let vm = new Vue({
+			el:"#app",
+			data:{
+				id:'',
+				name:'',
+				createAt:'',
+				keyword:'',
+				carList:[
+					{id:'1',name:'大奔',createAt:new Date()},
+					{id:'2',name:'丰田',createAt:new Date()},
+					{id:'3',name:'本田',createAt:new Date()}
+				]
+				
+
+			},
+			filters:{
+				dateFormat(dateStr){
+					var dt = new Date(dateStr);
+					var Y = dt.getFullYear();
+					var M = dt.getMonth() + 1;
+					var D = dt.getDate();
+					return `${Y}-${M}-${D}`
+				}
+			},
+			methods:{
+				add(){
+					this.carList.push({
+						id:this.id,
+						name:this.name,
+						createAt:new Date()
+					})
+				},
+				del(id){
+					/*
+					this.carList.some((item,index)=>{
+						if(item.id == id){
+							this.carList.splice(index,1);
+							return true
+						}
+					})
+					*/
+				   let i = this.carList.findIndex(item=>{
+					   if(item.id == id) return true
+				   });
+				   this.carList.splice(i,1);
+				},
+				search(keyword=''){
+					return  this.carList.filter(elem=>{
+						if(elem.name.includes(keyword)){
+							return elem
+						}					
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>
