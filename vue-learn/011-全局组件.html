@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>组件data</title>
+</head>
+<body>
+	<div id="app">
+		<counter></counter>
+		<counter></counter>
+	</div>
+	<template id="tem">
+		<div>
+			<button type="button" @click="add">counter</button>
+			<p>{{count}}</p>
+		</div>
+		
+	</template>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		Vue.component('counter',{
+			template:"#tem",
+			data:function(){
+				return {count:0}
+			},
+			methods:{
+				add(){
+					this.count++
+				}
+			}
+		})
+		let vm = new Vue({
+			el:"#app",
+			data:{}
+		})
+	</script>
+</body>
+</html>

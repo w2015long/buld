@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>列表过度</title>
+	<style>
+		.give{
+			border:1px dashed #89ad99;
+			line-height:30px;
+			height:30px;
+			list-style: none;
+			margin-bottom: 5px;
+		}
+		.v-enter,
+		.v-leave-to{
+			opacity: 1;
+			transform: translateX(150px);
+		}
+		.v-enter-active,
+		.v-leave-active{
+			opacity: 0.6;
+			transition: all 1s ease;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="id"/>
+		<input type="text" v-model="task"/ @keyup.enter="add" />
+		<button type="button" @click="add">添加</button>
+			<transition-group appear tag="ul">
+				<li class="give" v-for="item in list" :key="item.id">
+					{{item.id}}--------{{item.task}}
+				</li>
+			</transition-group>
+	</div>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		let vm = new Vue({
+			el:"#app",
+			data:{
+				id:'',
+				task:'',
+				list:[
+					{id:1,task:'学习react'},
+					{id:2,task:'learn vue'},
+					{id:3,task:'打豆豆'}
+				]
+			},
+			methods:{
+				add(){
+					this.list.push({id:this.id,task:this.task});
+					this.id = this.task = ''
+				}
+			}
+		})
+	</script>
+</body>
+</html>

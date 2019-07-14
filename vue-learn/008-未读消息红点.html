@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+        .red-point{
+          position: relative;
+        }
+        .red-point::before{
+          content: " ";
+          border: 3px solid red;/*设置红色*/
+          border-radius:3px;/*设置圆角*/
+          position: absolute;
+          z-index: 1000;
+          right: 0%;
+          margin-right: -2px;
+          margin-top: -2px;
+        }
+    </style>
+</head>
+<body>
+  <span class="red-point">hello world</span>
+</body>
+</html>
