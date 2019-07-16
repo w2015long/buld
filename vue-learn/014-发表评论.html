@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发表评论</title>
+</head>
+<body>
+    <div id="app">
+		<com-list @loading="loadComment"></com-list>
+        <ul>
+            <li v-for="item in list" :key="item.id">
+                {{ item.content }}
+                <span style="float: right">评论人:{{item.author}}</span>
+            </li>
+        </ul>
+		
+    </div>
+
+    <template id="com">
+		<div>
+			<label>评论人:
+				<input type="text" v-model="author" />
+			</label>
+			<label>评论内容:
+				<textarea v-model="content" cols="30" rows="10"></textarea>
+			</label>
+			<button @click="handleComment">提交</button>
+						
+		</div>
+
+    </template>
+    <script src="js/vue.js"></script>
+    <script>
+        let comList = {
+            template:'#com',
+            data:function(){
+                return {
+					content:'',
+					author:''
+                }
+            },
+			methods:{
+                handleComment:function () {
+                    var com = {id:Date.now(),content:this.content,author:this.author};
+					var ls = JSON.parse(localStorage.getItem('coms') || '[]');
+					ls.unshift(com);
+					localStorage.setItem('coms',JSON.stringify(ls));
+					this.content = this.author = '';
+					this.$emit('loading')
+                },				
+				
+			}
+        };
+        let vm = new Vue({
+            el:"#app",
+            data:{
+
+				list:[
+					{id:1,author:'tom',content:'tom learn vue template'},
+					{id:2,author:'leo',content:'leo  play bassketball'},
+					{id:3,author:'jason',content:'打豆豆'}
+				]				
+            },
+			created() {
+				this.loadComment()
+			},
+            methods:{
+				loadComment:function(){
+					var ls = JSON.parse(localStorage.getItem('coms') || '[]');
+					this.list = ls;
+				}				
+
+            },
+            components:{
+                'com-list':comList
+            }
+        })
+    </script>
+</body>
+</html>
