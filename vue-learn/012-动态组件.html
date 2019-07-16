@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>动态组件</title>
+	<style type="text/css">
+		.v-enter-active {
+		  transition: all .3s ease;
+		}
+		.v-leave-active {
+		  transition: all .8s ease;
+		}
+		.v-enter, .v-leave-to{
+		  transform: translateX(30px);
+		  opacity:.2;
+		}		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="currentView='login'">登录</button>
+		<button @click="currentView='register'">注册</button>
+		<transition mode="out-in" appear>
+			<component :is="currentView"></component>
+		</transition>
+	</div>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		let vm = new Vue({
+			el:"#app",
+			data:{
+				currentView:'login'
+			},
+			methods:{},
+			components:{
+				login:{
+					template:"<h1>登录</h1>"				
+				},
+				register:{
+					template:"<h1>注册</h1>"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

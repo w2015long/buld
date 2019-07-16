@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-子组件传数据->父组件.html</title>
+</head>
+<body>
+	<div id="app">
+		<son @fetch="show"></son>
+	</div>
+	<template id="con">
+		<button @click="getData">获取父组件的数据</button>
+	</template>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript">
+		const son = {
+			template:'#con',
+			data(){
+				return {
+					msg:'这是子组件中的数据'
+				}
+			},
+			methods:{
+				getData(){
+					this.$emit('fetch',this.msg)
+				}
+			}
+		}
+		let vm = new Vue({
+			el:"#app",
+			data:{
+				father:null
+			},
+			methods:{
+				show(arg){
+					console.log('这是父组件中的方法：',arg);
+					this.father = arg
+
+				}
+			},
+			components:{
+				son
+			}
+		})
+	</script>
+</body>
+</html>
