@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <style>
+        .router-link-active{
+            color: brown;
+            font-style: italic;
+        }
+        .v-enter,
+        .v-leave-to{
+            opacity: .5;
+            transform: translateX(130px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition: all .6s ease;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/login?id=66">登录</router-link>
+        <router-link to="/register">注册</router-link>
+        <transition mode="out-in" appear>     
+            <router-view></router-view>
+        </transition>    
+    </div>
+
+<script>
+    //定义路由组件
+    const Login = { 
+        template:"<h1>登录组件---{{$route.query.id}}</h1>",
+        data(){
+            return {
+                msg:'吃饭'
+            }
+        },
+        created(){
+            console.log('$route',this.$route)
+        } 
+    }
+    const Register = { template: "<h1>注册组件</h1>"}
+    //定义路由
+    var routes = [
+        {path:'/',redirect:'/login'},
+        {path:'/login',component:Login},
+        {path:'/register',component: Register}
+    ];
+    //创建router 实例
+    const  router = new VueRouter({
+        routes
+    });
+
+    let vm = new Vue({
+        el:"#app",
+        router,
+        data:{}
+
+    })
+</script>
+</body>
+</html>

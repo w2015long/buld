@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-命名视图.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.header{
+			height: 40px;
+			background-color: #256;
+		}
+		.container{
+			display: flex;
+			flex-direction: row;
+			height: 600px;
+		}
+		.left{
+			flex:2;
+			background-color: #f67;
+		}
+		.main{
+			flex:8;
+			background-color: #78f;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<router-view></router-view>
+		<div class="container">
+			<router-view name="left"></router-view>
+			<router-view name="main"></router-view>			
+		</div>
+
+	</div>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript" src="js/vue-router.js"></script>
+	<script type="text/javascript">
+		const Header = {
+			template:'<h1 class="header">头部区域</h1>'
+		}
+		const Left = {
+			template:'<h1 class="left">导航区域</h1>'
+		}
+		const Main = {
+			template:'<h1 class="main">主题区域</h1>'
+		}
+
+		const router = new VueRouter({
+			routes:[
+				{
+					path:'/',
+					components:{
+						default:Header,
+						left:Left,
+						main:Main
+					}
+				}
+			]
+		})
+		let vm = new Vue({
+			el:"#app",
+			data:{},
+			router
+		})
+	</script>
+</body>
+</html>

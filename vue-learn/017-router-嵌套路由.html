@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <style>
+        .router-link-active{
+            color: brown;
+            font-style: italic;
+        }
+        .v-enter,
+        .v-leave-to{
+            opacity: .5;
+            transform: translateX(130px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition: all .6s ease;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/home">首页</router-link>
+        <router-link to="/about">关于</router-link>
+        <transition mode="out-in" appear>     
+            <router-view></router-view>
+        </transition>    
+    </div>
+    <template id="come">
+        <div>
+            <h1>index 首页</h1>
+            <router-link to="/home/login">登录</router-link>
+            <router-link to="/home/register">注册</router-link>
+            <transition mode="out-in" appear>     
+                <router-view></router-view>
+            </transition>                
+        </div>
+    </template>
+<script>
+    //定义路由组件
+    const Login = { 
+        template:"<h3>登录组件</h3>",
+        data(){
+            return {
+                msg:'吃饭'
+            }
+        },
+        created(){
+            console.log('$route',this.$route)
+        } 
+    }
+    const Register = { template: "<h3>注册组件</h3>"}
+    const Home = {
+        template:"#come",
+
+    }
+    const About = {
+        template:"<h1>About 关于</h1>"
+    }    
+    //定义路由
+    var routes = [
+        {path:'/',redirect:'/home'},
+        {path:'/about',component: About},
+        {
+            path:'/home',
+            component: Home,
+            children:[
+                {path:'login',component:Login},
+                {path:'register',component: Register},
+            ]
+        },
+    ];
+    //创建router 实例
+    const  router = new VueRouter({
+        routes
+    });
+
+    let vm = new Vue({
+        el:"#app",
+        router,
+        data:{}
+
+    })
+</script>
+</body>
+</html>

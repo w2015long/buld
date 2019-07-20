@@ -8,26 +8,46 @@
             color: brown;
             font-style: italic;
         }
+        .v-enter,
+        .v-leave-to{
+            opacity: .5;
+            transform: translateX(130px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition: all .6s ease;
+        }
     </style>
     <script src="./js/vue.js"></script>
     <script src="./js/vue-router.js"></script>
 </head>
 <body>
     <div id="app">
-        <router-link to="/login">登录</router-link>
+        <router-link to="/login/66">登录</router-link>
         <router-link to="/register">注册</router-link>
-
-        <router-view></router-view>
+        <transition mode="out-in" appear>     
+            <router-view></router-view>
+        </transition>    
     </div>
 
 <script>
     //定义路由组件
-    const Login = { template:"<h1>登录组件</h1>" }
+    const Login = { 
+        template:"<h1>登录组件--{{$route.params.id}}</h1>",
+        data(){
+            return {
+                msg:'吃饭'
+            }
+        },
+        created(){
+            console.log('$route',this.$route)
+        } 
+    }
     const Register = { template: "<h1>注册组件</h1>"}
     //定义路由
     var routes = [
         {path:'/',redirect:'/login'},
-        {path:'/login',component:Login},
+        {path:'/login/:id',component:Login},
         {path:'/register',component: Register}
     ];
     //创建router 实例
