@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-render函数创建组件.html</title>
+</head>
+<body>
+	<div id="app">
+		<p>this is a app component</p>
+	</div>
+	<script type="text/javascript" src="./js/vue.js"></script>
+	<script type="text/javascript">
+		let Login = {
+			template:"<h1>login组件</h1>"
+		}
+		let vm = new Vue({
+			el:"#app",
+			data:{
+
+			},
+			render:function(createElement){
+				return createElement(Login)
+			}
+		})
+	</script>
+</body>
+</html>
