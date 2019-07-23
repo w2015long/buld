@@ -55,6 +55,11 @@ module.exports = {
 			}
 		]
 	},
+	resolve:{//配置别名
+		alias:{
+			'vue$':path.resolve(__dirname,'node_modules/vue/dist/vue.esm.js')
+		}
+	},
 	devServer:{
 		contentBase:"./dist",
 		open:true,
