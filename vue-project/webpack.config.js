@@ -28,6 +28,7 @@ module.exports = {
 		rules:[//第三方模块匹配规则
 			{test:/\.css$/i,use:['style-loader','css-loader']},
 			{test:/\.less$/i,use:['style-loader','css-loader','less-loader']},
+			{test:/\.sass$/i,use:['style-loader','css-loader','sass-loader']},
 			{//url-loader处理图片
 				test:/\.(jpg|png|gif|jpeg|bmp)/i,
 				use:[{
@@ -51,7 +52,11 @@ module.exports = {
 					loader:'babel-loader',
 					options:{
 						presets: ['env','es2015','stage-3'],//编译语法
-						plugins:['transform-runtime'],//插件
+						plugins:['transform-runtime',["component", [ {
+												      "libraryName": "mint-ui",
+												      "style": true }]
+												      ]
+								],//插件
 					}
 				}
 			},
