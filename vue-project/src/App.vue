@@ -1,19 +1,38 @@
 <template>
-	<h1 @click="show">app组件</h1>
+<div id="app">
+  <VirtualList :listData="data" :itemSize="100"/>
+</div>
 </template>
+
 <script>
-	import { Toast } from 'mint-ui';
-	export default {
-		name:"App",
-		methods:{
-			show(){
-				Toast({
-				  message: '操作成功',
-				});				
-			}	
-		}
-	}
+import VirtualList from "./components/VirtualList";
+let d = [];
+for (let i = 0; i < 1000; i++) {
+  d.push({ id: i, value: `这是第${i}条数据 ${Date.now()}` });
+}
+
+export default {
+  name: "App",
+  data() {
+    return {
+      data: d
+    };
+  },
+  components: {
+    VirtualList
+  }
+};
 </script>
-<style scoped>
-	
+
+<style>
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  margin:0;
+}
+#app{
+  height:100%;
+}
 </style>
