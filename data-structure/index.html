@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据结构与算法</title>
+</head>
+<body>
+<script src="./js/stack.js"></script>
+<script>
+    const dec2bin = (decNum) => {
+        let stack = new Stack();
+        console.log(stack);
+        //入栈
+        while (decNum) {
+            stack.push(decNum % 2);
+            decNum = Math.floor(decNum / 2);
+        }
+        let result = ''
+        while (!stack.isEmpty()) {
+            result += stack.pop()
+        }
+
+        return result;
+    }
+    console.log(dec2bin(10));
+</script>
+</body>
+</html>
