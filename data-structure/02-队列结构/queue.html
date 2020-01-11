@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>队列结构</title>
+</head>
+<body>
+<script>
+    (function(w){
+        function Queue() {
+            this.items = []
+        }
+
+        Queue.prototype = {
+            constructor:Queue,
+            enqueue(elem){//入队
+                this.items.push(elem)
+            },
+            dequeue(){//出队
+                return this.items.shift()
+            },
+            front(){//返回将要出队的元素
+                return this.items[0]
+            },
+            isEmpty() {
+                return !this.items.length;
+            },
+            size(){
+                return this.items.length
+            },
+            toString(){
+                let result = '';
+                for (let i=0;i<this.items.length;i++) {
+                    result += this.items[i] + ' '
+                }
+                return result
+            }
+        }
+        w.Queue = Queue
+    })(window);
+
+    // const q = new Queue()
+    // q.enqueue(1)
+    // q.enqueue(2)
+    // q.enqueue(3)
+    // q.enqueue(4)
+    // q.enqueue(5)
+    // q.dequeue()
+    // q.dequeue()
+    // alert(q.front())
+    // alert(q.toString())
+
+    /**
+     * 击鼓传花
+     * @param names
+     * @param num
+     * @returns {*}
+     */
+    function passGame(names,num) {
+        //1. 创建队列
+        const queue = new Queue()
+        //2 依次入队
+        names.forEach(name=>{
+            queue.enqueue(name)
+        });
+
+        //3. 队里只留一个
+        while (queue.size() > 1) {
+            //不满足num 的 先出队 再入队
+            for (let i=0;i<num-1;i++) {
+                queue.enqueue(queue.dequeue())
+            }
+            //num 对应的人 直接从队列移除
+            queue.dequeue();
+        }
+        
+        return queue.front();
+    }
+
+    const gameList = ['Tom',"Leo","Amy",'Jeck','Lucy'];
+
+    const ret = passGame(gameList,3);
+    alert(ret)
+</script>
+
+</body>
+</html>
