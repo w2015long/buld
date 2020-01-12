@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-优先级队列</title>
+</head>
+<body>
+<script>
+    (function(w){
+        function PriorityQueue() {
+            this.items = [];
+            //创建内部类
+            function QueueElem(element,priority) {
+                this.element = element;
+                this.priority = priority;
+            }
+
+        }
+        PriorityQueue.prototype = {
+            constructor:PriorityQueue,
+            queueElem(element,priority){
+                function QueueElem(element,priority) {
+                    this.element = element;
+                    this.priority = priority;
+                }
+                return new QueueElem(element,priority);
+            },
+            enqueue(element,priority){//入队
+                const queueElem = this.queueElem(element,priority)
+                if (!this.size()) {//没有元素时 不用比较 直接插入
+                    this.items.push(queueElem)
+                } else {
+                    let addB = false;
+                    for (let i=0;i<this.size();i++) {
+                        if (queueElem.priority < this.items[i].priority) {
+                            this.items.splice(i,0,queueElem);
+                            addB = true;
+                            break
+                        }
+                    }
+                    if (!addB) {
+                        this.items.push(queueElem)
+                    }
+                }
+            },
+            dequeue(){//出队
+                return this.items.shift()
+            },
+            front(){//返回将要出队的元素
+                return this.items[0]
+            },
+            isEmpty() {
+                return !this.items.length;
+            },
+            size(){
+                return this.items.length
+            },
+            toString(){
+                return JSON.stringify(this.items)
+            }
+
+        }
+
+        window.PriorityQueue = PriorityQueue
+    })(window);
+
+    const pq = new PriorityQueue();
+    console.log(pq);
+    pq.enqueue('Tom',100)
+    pq.enqueue('Leo',99)
+    pq.enqueue('Jeck',-1)
+    pq.enqueue('Amy',10)
+    pq.enqueue('Tony',33);
+    console.log(pq.toString());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单向链表</title>
+</head>
+<body>
+<script>
+    class LinkedList {
+        constructor(){
+            this.head = null
+            this.length = 0;
+        }
+        append(data){
+            //1. 创建新节点
+            const node = {
+                data,
+                next:null
+            }
+            //2.判断是否是第一个节点
+            if (!this.length) {
+                this.head = node;
+            } else {
+                //从第一个节点 依次找到最后一个节点
+                let current = this.head;
+                while (current.next) {
+                    current = current.next;
+                }
+                //最后节点next指向新的节点
+                current.next = node;
+            }
+            //3.length+1
+            this.length++
+        }
+
+        insert(position,data){
+            //1. 边界判断
+            if (position<0 || position>this.length) return
+            //2. 新建node
+            const node = {
+                data,
+                next:null
+            }
+            //3插入位置判断
+            if (!position) {//插入到头部
+                node.next = this.head;
+                this.head = node;
+            } else {
+                let current = this.head;
+                let previous = null;
+                for (let i=0;i<position;i++) {
+                    previous = current;
+                    current = current.next;
+                }
+                previous.next = node;
+                node.next = current
+            }
+        }
+
+        toString(){
+            let current = this.head;
+            let result = '';
+            while (current)  {
+                result += current.data + " ";
+                current = current.next;
+            }
+            return result
+        }
+    }
+
+    const link = new LinkedList();
+    link.append('1abc');
+    link.append('2cbd');
+    link.append('3okl');
+    link.append('4nkf');
+    link.insert(1,'999999')
+    console.log(link.toString());
+</script>
+</body>
+</html>
