@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域插槽</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <language-tem > </language-tem>
+    <language-tem>
+        <template v-slot="slotProps">
+            <ul>
+                <li v-for="item in slotProps.major" :key="item">{{ item }}</li>
+            </ul>
+        </template>
+    </language-tem>
+</div>
+
+<template id="tem">
+    <div>
+        <slot :major="major">
+            <ul>
+                <li v-for="item in language" :key="item">{{ item }}</li>
+            </ul>
+        </slot>
+    </div>
+
+</template>
+
+</body>
+<script>
+
+    const language = {
+        data:()=>({
+            language:['English','Math','JavaScript','Java'],
+            major:["a","v","n","y"]
+        }),
+        template:"#tem"
+
+    }
+
+    let vm = new Vue({
+        el:"#app",
+        data:{},
+        components:{
+            "language-tem":language,
+        },
+
+    })
+</script>
+</html>
