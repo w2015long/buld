@@ -60,6 +60,20 @@
             this.length++
         }
 
+        get(position){
+            if (position<0 || position>this.length) return
+            
+            if (position === 0) {
+                return this.head
+            } else {
+                let current = this.head
+                for (let i=0;i<position;i++) {
+                    current = current.next
+                }
+                return current
+            }
+        }
+
         toString(){
             let current = this.head;
             let result = '';
